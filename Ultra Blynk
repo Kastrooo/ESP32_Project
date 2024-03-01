@@ -1,0 +1,54 @@
+#define BLYNK_TEMPLATE_ID "TMPL3namId88x"
+#define BLYNK_TEMPLATE_NAME "Servo Control"
+#define BLYNK_AUTH_TOKEN "jPkz_5CxlzEd7m3PM9T9uDwdTKwpxNiz"
+
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+#define TRIGGER_PIN  19 // Pin connected to the trigger pin of ultrasonic sensor
+#define ECHO_PIN     18 // Pin connected to the echo pin of ultrasonic sensor
+
+char auth[] = "jPkz_5CxlzEd7m3PM9T9uDwdTKwpxNiz"; // Blynk auth token
+char ssid[] = "GNXS-3b4b58"; // Your WiFi SSID
+char pass[] = "200C863B4B58"; // Your WiFi password
+
+BlynkTimer timer;
+
+void setup() {
+  Serial.begin(115200);
+  Blynk.begin(auth, ssid, pass);
+
+  pinMode(TRIGGER_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  Serial.begin(9600);
+
+  timer.setInterval(1000L, sendUltrasonicData); // Send data every second
+}
+
+void loop() {
+  Blynk.run();
+  timer.run();
+}
+
+void sendUltrasonicData() {
+  long duration, distance;
+
+  // Clear the trigger pin
+  digitalWrite(TRIGGER_PIN, LOW);
+  delayMicroseconds(2);
+
+  // Set the trigger pin high for 10 microseconds
+  digitalWrite(TRIGGER_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIGGER_PIN, LOW);
+
+  // Read the echo pin, and calculate the distance based on the speed of sound (343m/s)
+  duration = pulseIn(ECHO_PIN, HIGH);
+  distance = (duration * 0.0343) / 2;
+
+  Serial.print("Distance: ");
+  Serial.println(distance);
+
+  Blynk.virtualWrite(V1, distance); // Send distance data to Blynk
+}
