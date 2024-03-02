@@ -1,6 +1,6 @@
-#define BLYNK_TEMPLATE_ID "TMPL3namId88x"
-#define BLYNK_TEMPLATE_NAME "Servo Control"
-#define BLYNK_AUTH_TOKEN "jPkz_5CxlzEd7m3PM9T9uDwdTKwpxNiz"
+#define BLYNK_TEMPLATE_ID "Template ID"
+#define BLYNK_TEMPLATE_NAME "Template Name"
+#define BLYNK_AUTH_TOKEN "auth_token"
 
 #include <WiFi.h>
 #include <WiFiClient.h>
