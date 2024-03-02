@@ -10,8 +10,8 @@
 #define ECHO_PIN     18 // Pin connected to the echo pin of ultrasonic sensor
 
 char auth[] = "jPkz_5CxlzEd7m3PM9T9uDwdTKwpxNiz"; // Blynk auth token
-char ssid[] = "GNXS-3b4b58"; // Your WiFi SSID
-char pass[] = "200C863B4B58"; // Your WiFi password
+char ssid[] = "WiFi SSID"; // Your WiFi SSID
+char pass[] = "WiFiPass"; // Your WiFi password
 
 BlynkTimer timer;
 
