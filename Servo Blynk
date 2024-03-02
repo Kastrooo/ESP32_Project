@@ -11,8 +11,8 @@
 #include <ESP32Servo.h>
 
 char auth[] = BLYNK_AUTH_TOKEN; // Blynk authentication token
-char ssid[] = "GNXS-3b4b58"; // Your WiFi SSID
-char pass[] = "200C863B4B58"; // Your WiFi password
+char ssid[] = "WiFi SSID"; // Your WiFi SSID
+char pass[] = "WiFiPass"; // Your WiFi password
 
 Servo servo1;
 Servo servo2;
